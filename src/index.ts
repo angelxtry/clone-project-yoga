@@ -2,7 +2,7 @@ import { Options } from 'graphql-yoga';
 import { createConnection } from 'typeorm';
 import * as dotenv from 'dotenv';
 import app from './app';
-import connectionOptions from './ormconfig';
+import connectionOptions from './ormConfig';
 
 dotenv.config();
 
