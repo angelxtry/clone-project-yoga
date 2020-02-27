@@ -5,3 +5,6 @@ build/
 tmp/
 temp/
 ormconfig.json
+
+# dotenv
+.env
