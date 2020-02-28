@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
+    "@types/bcrypt": "^3.0.0",
     "@types/cors": "^2.8.6",
     "@types/helmet": "^0.0.45",
     "@types/morgan": "^1.7.37",
@@ -21,6 +22,7 @@
     "typescript": "^3.8.2"
   },
   "dependencies": {
+    "bcrypt": "^4.0.0",
     "class-validator": "^0.11.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
