@@ -8,12 +8,15 @@ import {
 } from 'typeorm';
 import { verificationTarget } from '../types/types';
 
+const PHONE = 'PHONE';
+const EMAIL = 'EMAIL';
+
 @Entity()
 class Verification extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'text', enum: ['PHONE', 'EMAIL'] })
+  @Column({ type: 'text', enum: [PHONE, EMAIL] })
   target: verificationTarget;
 
   @Column({ type: 'text' })

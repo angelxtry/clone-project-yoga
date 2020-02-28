@@ -1,1 +1,1 @@
-export type verificationTarget = 'EMAIL' | 'PASSWORD';
+export type verificationTarget = 'PHONE' | 'EMAIL';
