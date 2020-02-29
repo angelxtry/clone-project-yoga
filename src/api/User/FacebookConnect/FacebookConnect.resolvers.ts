@@ -1,3 +1,4 @@
+import createJWT from '../../../utils/createJWT';
 import { Resolvers } from '../../../types/resolvers';
 import {
   FacebookConnectMutationArgs,
@@ -15,10 +16,11 @@ const resolvers: Resolvers = {
       try {
         const existingUser = await User.findOne({ fbId });
         if (existingUser) {
+          const token = createJWT(existingUser.id);
           return {
             ok: true,
             error: null,
-            token: 'already',
+            token,
           };
         }
       } catch (error) {
@@ -30,15 +32,16 @@ const resolvers: Resolvers = {
       }
 
       try {
-        await User.create({
+        const newUser = await User.create({
           ...args,
           // eslint-disable-next-line max-len
           profilePhoto: `https://graph.facebook.com/${fbId}/picture?type=square`,
         }).save();
+        const token = createJWT(newUser.id);
         return {
           ok: true,
           error: null,
-          token: 'create',
+          token,
         };
       } catch (error) {
         return {
