@@ -53,7 +53,7 @@ type CompletePhoneVerificationResponse {
 type Mutation {
   CompletePhoneVerification(phoneNumber: String!, key: String!): CompletePhoneVerificationResponse!
   EmailSignIn(email: String!, password: String!): EmailSignInResponse!
-  EmailSignUp(firstName: String!, lastName: String!, email: String!, pasword: String!, profilePhoto: String!, age: Int!, phoneNumber: String!): EmailSignUpResponse!
+  EmailSignUp(firstName: String!, lastName: String!, email: String!, password: String!, profilePhoto: String!, age: Int!, phoneNumber: String!): EmailSignUpResponse!
   FacebookConnect(firstName: String!, lastName: String!, email: String, fbId: String!): FacebookConnectResponse!
   StartPhoneVerification(phoneNumber: String!): StartPhoneVerificationResponse!
 }
@@ -74,6 +74,17 @@ type FacebookConnectResponse {
   ok: Boolean!
   error: String
   token: String
+}
+
+type GetMyProfileResponse {
+  ok: Boolean!
+  error: String
+  user: User
+}
+
+type Query {
+  GetMyProfile: GetMyProfileResponse!
+  user: User
 }
 
 type User {
@@ -101,10 +112,6 @@ type User {
   messages: [Message]
   createdAt: String!
   updatedAt: String
-}
-
-type Query {
-  user: User
 }
 
 type StartPhoneVerificationResponse {
