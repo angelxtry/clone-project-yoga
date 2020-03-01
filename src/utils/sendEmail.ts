@@ -1,4 +1,7 @@
 import * as Mailgun from 'mailgun-js';
+import * as dotenv from 'dotenv';
+
+dotenv.config();
 
 const mailGunClient = new Mailgun({
   apiKey: process.env.MAILGUN_API_KEY || '',
