@@ -1,4 +1,3 @@
-import cleanNullArgs from '../../../utils/cleanNummArgs';
 import User from '../../../entities/User';
 import { Resolvers } from '../../../types/resolvers';
 import {
@@ -13,12 +12,22 @@ const resolvers: Resolvers = {
       async (
         _: any,
         args: ReportMovementMutationArgs,
-        { req }: { req: any },
+        { req, pubSub }: { req: any; pubSub: any },
       ): Promise<ReportMovementResponse> => {
         const { user }: { user: User } = req;
-        const notNull = cleanNullArgs(args);
+        const notNull: { [key: string]: number } = {};
+        if (args.orientation) {
+          notNull.lastOrientation = args.orientation;
+        }
+        if (args.lat) {
+          notNull.lastLat = args.lat;
+        }
+        if (args.lng) {
+          notNull.lastLng = args.lng;
+        }
         try {
           await User.update({ id: user.id }, { ...notNull });
+          pubSub.publish('driverUpdate', { DriversSubscription: user });
           return {
             ok: true,
             error: null,

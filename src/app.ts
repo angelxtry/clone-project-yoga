@@ -1,4 +1,4 @@
-import { GraphQLServer } from 'graphql-yoga';
+import { GraphQLServer, PubSub } from 'graphql-yoga';
 import * as cors from 'cors';
 import * as helmet from 'helmet';
 import * as logger from 'morgan';
@@ -9,10 +9,14 @@ import decodeJWT from './utils/decodeJWT';
 class App {
   public app: GraphQLServer;
 
+  public pubSub: any;
+
   constructor() {
+    this.pubSub = new PubSub();
+    this.pubSub.ee.setMaxListeners(99);
     this.app = new GraphQLServer({
       schema,
-      context: (req) => ({ req: req.request }),
+      context: (req) => ({ req: req.request, pubSub: this.pubSub }),
     });
     this.middlewares();
   }
