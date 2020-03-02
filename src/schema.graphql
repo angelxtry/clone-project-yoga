@@ -55,6 +55,7 @@ type GetMyPlaceResponse {
 type Query {
   GetMyPlace: GetMyPlaceResponse!
   GetMyProfile: GetMyProfileResponse!
+  GetNearbyDriver: GetNearbyDriverResponse!
   user: User
 }
 
@@ -124,6 +125,12 @@ type GetMyProfileResponse {
   user: User
 }
 
+type GetNearbyDriverResponse {
+  ok: Boolean!
+  error: String
+  drivers: [User]
+}
+
 type ReportMovementResponse {
   ok: Boolean!
   error: String
@@ -154,10 +161,10 @@ type User {
   lastLat: Float
   lastOrientation: Float
   chat: Chat
+  messages: [Message]
   rideAsPassenger: [Ride]
   rideAsDriver: [Ride]
   places: [Place]
-  messages: [Message]
   createdAt: String!
   updatedAt: String
 }

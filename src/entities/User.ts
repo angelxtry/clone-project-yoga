@@ -56,13 +56,13 @@ class User extends BaseEntity {
   profilePhoto: string;
 
   @Column({ type: 'boolean', default: false })
-  isDriving: Boolean;
+  isDriving: boolean;
 
   @Column({ type: 'boolean', default: false })
-  isRiding: Boolean;
+  isRiding: boolean;
 
   @Column({ type: 'boolean', default: false })
-  isTaken: Boolean;
+  isTaken: boolean;
 
   @Column({ type: 'double precision', default: 0 })
   lastLng: number;
@@ -86,13 +86,13 @@ class User extends BaseEntity {
   rideAsDriver: Ride[];
 
   @OneToMany(() => Place, (place) => place.user)
-  places: Place[] | any;
+  places: Place[];
 
   @CreateDateColumn()
-  createdAt: String;
+  createdAt: string;
 
   @UpdateDateColumn()
-  updatedAt: String;
+  updatedAt: string;
 
   get fullName(): string {
     return `${this.firstName} ${this.lastName}`;
