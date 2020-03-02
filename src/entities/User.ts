@@ -15,6 +15,7 @@ import { IsEmail } from 'class-validator';
 import Chat from './Chat';
 import Message from './Message';
 import Ride from './Ride';
+import Place from './Place';
 
 const BCRYPT_ROUND = 10;
 
@@ -83,6 +84,9 @@ class User extends BaseEntity {
 
   @OneToMany(() => Ride, (ride) => ride.driver)
   rideAsDriver: Ride[];
+
+  @OneToMany(() => Place, (place) => place.user)
+  places: Place[];
 
   @CreateDateColumn()
   createdAt: String;

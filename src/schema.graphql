@@ -41,6 +41,7 @@ type Place {
   lng: Float!
   address: String!
   isFav: Boolean!
+  user: User!
   createdAt: String!
   updatedAt: String
 }
@@ -135,6 +136,7 @@ type User {
   chat: Chat
   rideAsPassenger: [Ride]
   rideAsDriver: [Ride]
+  place: [Place]
   messages: [Message]
   createdAt: String!
   updatedAt: String

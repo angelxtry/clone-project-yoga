@@ -20,6 +20,7 @@ type User {
   chat: Chat
   rideAsPassenger: [Ride]
   rideAsDriver: [Ride]
+  place: [Place]
   messages: [Message]
   createdAt: String!
   updatedAt: String
