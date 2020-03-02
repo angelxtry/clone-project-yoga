@@ -1,28 +1,23 @@
 import cleanNullArgs from '../../../utils/cleanNummArgs';
-import authResolver from '../../../utils/authResolver';
 import User from '../../../entities/User';
 import { Resolvers } from '../../../types/resolvers';
 import {
-  UpdateMyProfileResponse,
-  UpdateMyProfileMutationArgs,
+  ReportMovementResponse,
+  ReportMovementMutationArgs,
 } from '../../../types/graphql';
+import authResolver from '../../../utils/authResolver';
 
 const resolvers: Resolvers = {
   Mutation: {
-    UpdateMyProfile: authResolver(
+    ReportMovement: authResolver(
       async (
         _: any,
-        args: UpdateMyProfileMutationArgs,
+        args: ReportMovementMutationArgs,
         { req }: { req: any },
-      ): Promise<UpdateMyProfileResponse> => {
+      ): Promise<ReportMovementResponse> => {
         const { user }: { user: User } = req;
-        const notNull: any = cleanNullArgs(args);
+        const notNull = cleanNullArgs(args);
         try {
-          if (args.password !== null) {
-            user.password = args.password as string;
-            await user.save();
-            delete notNull.password;
-          }
           await User.update({ id: user.id }, { ...notNull });
           return {
             ok: true,
