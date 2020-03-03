@@ -5,6 +5,8 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   OneToMany,
+  ManyToOne,
+  Column,
 } from 'typeorm';
 
 import Message from './Message';
@@ -20,6 +22,18 @@ class Chat extends BaseEntity {
 
   @OneToMany(() => User, (user) => user.chat)
   participants: User[];
+
+  @Column({ nullable: true })
+  passengerId: number;
+
+  @ManyToOne(() => User, (user) => user.chatAsPassenger)
+  passenger: User;
+
+  @Column({ nullable: true })
+  driverId: number;
+
+  @ManyToOne(() => User, (user) => user.chatAsDriver)
+  driver: User;
 
   @CreateDateColumn()
   createdAt: string;
