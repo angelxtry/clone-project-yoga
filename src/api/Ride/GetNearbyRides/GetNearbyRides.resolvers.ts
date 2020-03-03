@@ -17,28 +17,28 @@ const resolvers: Resolvers = {
         if (user.isDriving) {
           const { lastLat, lastLng } = user;
           try {
-            const rides = await getRepository(Ride).find({
+            const ride = await getRepository(Ride).findOne({
               status: 'REQUESTED',
               pickUpLat: Between(lastLat + 0.05, lastLat - 0.05),
               pickupLng: Between(lastLng + 0.05, lastLng - 0.05),
-            });
+            }) || null;
             return {
               ok: true,
               error: null,
-              rides,
+              ride,
             };
           } catch (error) {
             return {
               ok: false,
               error: error.message,
-              rides: null,
+              ride: null,
             };
           }
         }
         return {
           ok: false,
           error: 'Already driving',
-          rides: null,
+          ride: null,
         };
       },
     ),
