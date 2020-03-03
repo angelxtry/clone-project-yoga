@@ -20,7 +20,7 @@ const resolvers: Resolvers = {
             const ride = await getRepository(Ride).findOne({
               status: 'REQUESTED',
               pickUpLat: Between(lastLat + 0.05, lastLat - 0.05),
-              pickupLng: Between(lastLng + 0.05, lastLng - 0.05),
+              pickUpLng: Between(lastLng + 0.05, lastLng - 0.05),
             }) || null;
             return {
               ok: true,

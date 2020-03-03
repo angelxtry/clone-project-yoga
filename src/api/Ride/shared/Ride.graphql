@@ -3,7 +3,7 @@ type Ride {
   status: String!
   pickUpAddress: String!
   pickUpLat: Float!
-  pickupLng: Float!
+  pickUpLng: Float!
   dropOffAddress: String!
   dropOffLat: Float!
   dropOffLng: Float!
