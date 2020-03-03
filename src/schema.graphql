@@ -1,7 +1,28 @@
+type GetChatResponse {
+  ok: Boolean!
+  error: String
+  chat: Chat
+}
+
+type Query {
+  GetChat(chatId: Int!): GetChatResponse!
+  GetMyPlace: GetMyPlaceResponse!
+  GetNearbyRide: GetNearbyRideResponse!
+  GetRide(rideId: Int!): GetRideResponse!
+  GetMyProfile: GetMyProfileResponse!
+  GetNearbyDriver: GetNearbyDriverResponse!
+  user: User
+}
+
 type Chat {
   id: Int!
-  messages: [Message]!
-  participants: [User]!
+  messages: [Message]
+  passengerId: Int!
+  passenger: User!
+  driverId: Int!
+  driver: User!
+  rideId: Int!
+  ride: Ride!
   createdAt: String!
   updatedAt: String
 }
@@ -52,15 +73,6 @@ type GetMyPlaceResponse {
   ok: Boolean!
   error: String
   places: [Place]
-}
-
-type Query {
-  GetMyPlace: GetMyPlaceResponse!
-  GetNearbyRide: GetNearbyRideResponse!
-  GetRide(rideId: Int!): GetRideResponse!
-  GetMyProfile: GetMyProfileResponse!
-  GetNearbyDriver: GetNearbyDriverResponse!
-  user: User
 }
 
 type Place {
@@ -116,6 +128,8 @@ type Ride {
   passenger: User!
   driverId: Int
   driver: User!
+  chatId: Int
+  chat: Chat
   createdAt: String!
   updatedAt: String
 }
@@ -203,10 +217,11 @@ type User {
   lastLng: Float
   lastLat: Float
   lastOrientation: Float
-  chat: Chat
   messages: [Message]
   rideAsPassenger: [Ride]
   rideAsDriver: [Ride]
+  chatAsPassenger: [Chat]
+  chatAsDriver: [Chat]
   places: [Place]
   createdAt: String!
   updatedAt: String
