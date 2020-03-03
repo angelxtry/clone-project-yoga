@@ -1,7 +1,7 @@
+import { ReqContext } from '../../../types/types';
 import Place from '../../../entities/Place';
 import cleanNullArgs from '../../../utils/cleanNummArgs';
 import authResolver from '../../../utils/authResolver';
-import User from '../../../entities/User';
 import {
   EditPlaceResponse,
   EditPlaceMutationArgs,
@@ -14,9 +14,9 @@ const resolvers: Resolvers = {
       async (
         _: any,
         args: EditPlaceMutationArgs,
-        { req }: { req: any },
+        { req }: ReqContext,
       ): Promise<EditPlaceResponse> => {
-        const { user }: { user: User } = req;
+        const { user } = req;
         try {
           const place = await Place.findOne({ id: args.placeId });
           if (place) {

@@ -1,8 +1,8 @@
 import Chat from '../../../entities/Chat';
-import User from '../../../entities/User';
 import { Resolvers } from '../../../types/resolvers';
 import authResolver from '../../../utils/authResolver';
 import { GetChatResponse, GetChatQueryArgs } from '../../../types/graphql';
+import { ReqContext } from '../../../types/types';
 
 const resolvers: Resolvers = {
   Query: {
@@ -10,9 +10,9 @@ const resolvers: Resolvers = {
       async (
         _: any,
         args: GetChatQueryArgs,
-        { req }: { req: any },
+        { req }: ReqContext,
       ): Promise<GetChatResponse> => {
-        const { user }: { user: User } = req;
+        const { user } = req;
         try {
           const chat = await Chat.findOne(
             {

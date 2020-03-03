@@ -1,6 +1,6 @@
+import { ReqContext } from '../../../types/types';
 import { Resolvers } from '../../../types/resolvers';
 import { ToggleDrivingModeResponse } from '../../../types/graphql';
-import User from '../../../entities/User';
 import authResolver from '../../../utils/authResolver';
 
 const resolvers: Resolvers = {
@@ -9,9 +9,9 @@ const resolvers: Resolvers = {
       async (
         _: any,
         __: any,
-        { req }: { req: any },
+        { req }: ReqContext,
       ): Promise<ToggleDrivingModeResponse> => {
-        const { user }: { user: User } = req;
+        const { user } = req;
         try {
           user.isDriving = !user.isDriving;
           await user.save();

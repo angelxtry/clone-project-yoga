@@ -1,5 +1,5 @@
+import { ReqContext } from '../../../types/types';
 import Verification from '../../../entities/Verification';
-import User from '../../../entities/User';
 import {
   CompleteEmailVerificationResponse,
   CompleteEmailVerificationMutationArgs,
@@ -13,9 +13,9 @@ const resolvers: Resolvers = {
       async (
         _: any,
         args: CompleteEmailVerificationMutationArgs,
-        { req }: { req: any },
+        { req }: ReqContext,
       ): Promise<CompleteEmailVerificationResponse> => {
-        const { user }: { user: User } = req;
+        const { user } = req;
         const { key } = args;
         if (user.email) {
           try {

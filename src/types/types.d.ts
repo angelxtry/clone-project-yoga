@@ -1,3 +1,5 @@
+import User from '../entities/User';
+
 export type verificationTarget = 'PHONE' | 'EMAIL';
 
 export type rideStatus =
@@ -6,3 +8,9 @@ export type rideStatus =
   | 'CANCELED'
   | 'REQUESTED'
   | 'ONROUTE';
+
+export type ReqContext = {
+  req: {
+    user: User
+  }
+}

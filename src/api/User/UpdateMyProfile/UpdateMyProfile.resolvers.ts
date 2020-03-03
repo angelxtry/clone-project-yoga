@@ -1,3 +1,4 @@
+import { ReqContext } from '../../../types/types';
 import cleanNullArgs from '../../../utils/cleanNummArgs';
 import authResolver from '../../../utils/authResolver';
 import User from '../../../entities/User';
@@ -13,9 +14,9 @@ const resolvers: Resolvers = {
       async (
         _: any,
         args: UpdateMyProfileMutationArgs,
-        { req }: { req: any },
+        { req }: ReqContext,
       ): Promise<UpdateMyProfileResponse> => {
-        const { user }: { user: User } = req;
+        const { user } = req;
         const notNull: any = cleanNullArgs(args);
         try {
           if (args.password !== null) {

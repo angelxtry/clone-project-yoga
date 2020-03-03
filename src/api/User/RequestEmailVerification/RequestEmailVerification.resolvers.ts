@@ -1,9 +1,9 @@
+import { ReqContext } from '../../../types/types';
 import sendVerificationEmail from '../../../utils/sendEmail';
 import Verification from '../../../entities/Verification';
 import { Resolvers } from '../../../types/resolvers';
 import { RequestEmailVerificationResponse } from '../../../types/graphql';
 import authResolver from '../../../utils/authResolver';
-import User from '../../../entities/User';
 
 const resolvers: Resolvers = {
   Mutation: {
@@ -11,9 +11,9 @@ const resolvers: Resolvers = {
       async (
         _: any,
         __: any,
-        { req }: { req: any },
+        { req }: ReqContext,
       ): Promise<RequestEmailVerificationResponse> => {
-        const { user }: { user: User } = req;
+        const { user } = req;
         if (user.email && !user.verifiedEmail) {
           try {
             const verification = await Verification.findOne({

@@ -1,5 +1,5 @@
+import { ReqContext } from '../../../types/types';
 import Ride from '../../../entities/Ride';
-import User from '../../../entities/User';
 import authResolver from '../../../utils/authResolver';
 import { Resolvers } from '../../../types/resolvers';
 import { GetRideResponse, GetRideQueryArgs } from '../../../types/graphql';
@@ -10,9 +10,9 @@ const resolvers: Resolvers = {
       async (
         _: any,
         args: GetRideQueryArgs,
-        { req }: { req: any },
+        { req }: ReqContext,
       ): Promise<GetRideResponse> => {
-        const { user }: { user: User } = req;
+        const { user } = req;
         try {
           const ride = await Ride.findOne({ id: args.rideId });
           if (ride) {

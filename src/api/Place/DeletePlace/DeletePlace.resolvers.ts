@@ -1,6 +1,6 @@
+import { ReqContext } from '../../../types/types';
 import authResolver from '../../../utils/authResolver';
 import Place from '../../../entities/Place';
-import User from '../../../entities/User';
 import {
   DeletePlaceResponse,
   DeletePlaceMutationArgs,
@@ -13,9 +13,9 @@ const resolvers: Resolvers = {
       async (
         _: any,
         args: DeletePlaceMutationArgs,
-        { req }: { req: any },
+        { req }: ReqContext,
       ): Promise<DeletePlaceResponse> => {
-        const { user }: { user: User } = req;
+        const { user } = req;
         try {
           const place = await Place.findOne({ id: args.placeId });
           if (place) {
