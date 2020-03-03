@@ -1,49 +1,53 @@
+import Message from '../../../entities/Message';
 import Chat from '../../../entities/Chat';
 import User from '../../../entities/User';
-import { Resolvers } from '../../../types/resolvers';
 import authResolver from '../../../utils/authResolver';
-import { GetChatResponse, GetChatQueryArgs } from '../../../types/graphql';
+import {
+  SendChatMessageMutationArgs,
+  SendChatMessageResponse,
+} from '../../../types/graphql';
+import { Resolvers } from '../../../types/resolvers';
 
 const resolvers: Resolvers = {
-  Query: {
-    GetChat: authResolver(
+  Mutation: {
+    SendChatMessage: authResolver(
       async (
         _: any,
-        args: GetChatQueryArgs,
+        args: SendChatMessageMutationArgs,
         { req }: { req: any },
-      ): Promise<GetChatResponse> => {
+      ): Promise<SendChatMessageResponse> => {
         const { user }: { user: User } = req;
         try {
-          const chat = await Chat.findOne(
-            {
-              id: args.chatId,
-            },
-            { relations: ['messages'] },
-          );
+          const chat = await Chat.findOne({ id: args.chatId });
           if (chat) {
             if (chat.passengerId === user.id || chat.driverId === user.id) {
+              const message = await Message.create({
+                text: args.text,
+                chat,
+                user,
+              }).save();
               return {
                 ok: true,
                 error: null,
-                chat,
+                message,
               };
             }
             return {
               ok: false,
-              error: 'Not authorized to join this chat',
-              chat: null,
+              error: 'Not authorized to send message',
+              message: null,
             };
           }
           return {
             ok: false,
             error: 'Chat not found',
-            chat: null,
+            message: null,
           };
         } catch (error) {
           return {
             ok: false,
             error: error.message,
-            chat: null,
+            message: null,
           };
         }
       },
