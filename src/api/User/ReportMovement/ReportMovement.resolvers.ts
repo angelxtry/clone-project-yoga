@@ -1,3 +1,4 @@
+import cleanNullArgs from '../../../utils/cleanNummArgs';
 import User from '../../../entities/User';
 import { Resolvers } from '../../../types/resolvers';
 import {
@@ -15,19 +16,11 @@ const resolvers: Resolvers = {
         { req, pubSub }: { req: any; pubSub: any },
       ): Promise<ReportMovementResponse> => {
         const { user }: { user: User } = req;
-        const notNull: { [key: string]: number } = {};
-        if (args.orientation) {
-          notNull.lastOrientation = args.orientation;
-        }
-        if (args.lat) {
-          notNull.lastLat = args.lat;
-        }
-        if (args.lng) {
-          notNull.lastLng = args.lng;
-        }
+        const notNull = cleanNullArgs(args);
         try {
           await User.update({ id: user.id }, { ...notNull });
-          pubSub.publish('driverUpdate', { DriversSubscription: user });
+          const updateUser = await User.findOne({ id: user.id });
+          pubSub.publish('driverUpdate', { DriversSubscription: updateUser });
           return {
             ok: true,
             error: null,
