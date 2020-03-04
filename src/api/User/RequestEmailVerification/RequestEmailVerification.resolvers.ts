@@ -1,4 +1,4 @@
-import { ReqContext } from '../../../types/types';
+import { reqContext } from '../../../types/types';
 import sendVerificationEmail from '../../../utils/sendEmail';
 import Verification from '../../../entities/Verification';
 import { Resolvers } from '../../../types/resolvers';
@@ -11,7 +11,7 @@ const resolvers: Resolvers = {
       async (
         _: any,
         __: any,
-        { req }: ReqContext,
+        { req }: reqContext,
       ): Promise<RequestEmailVerificationResponse> => {
         const { user } = req;
         if (user.email && !user.verifiedEmail) {

@@ -1,14 +1,15 @@
 import { withFilter } from 'graphql-yoga';
+import { pubSubContext, subscriptionCtx } from '../../../types/types';
 import Chat from '../../../entities/Chat';
-import User from '../../../entities/User';
 
 const resolvers = {
   Subscription: {
     MessageSubscription: {
       subscribe: withFilter(
-        (_: any, __: any, { pubSub }) => pubSub.asyncIterator('sendMessage'),
-        async (payload: any, _: any, { context }) => {
-          const user: User = context.currentUser;
+        (_: any, __: any, { pubSub }: pubSubContext) =>
+          pubSub.asyncIterator('sendMessage'),
+        async (payload: any, _: any, { context }: subscriptionCtx) => {
+          const user = context.currentUser;
           const {
             MessageSubscription: { chatId },
           } = payload;

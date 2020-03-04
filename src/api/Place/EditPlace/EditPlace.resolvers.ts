@@ -1,4 +1,4 @@
-import { ReqContext } from '../../../types/types';
+import { reqContext } from '../../../types/types';
 import Place from '../../../entities/Place';
 import cleanNullArgs from '../../../utils/cleanNummArgs';
 import authResolver from '../../../utils/authResolver';
@@ -14,7 +14,7 @@ const resolvers: Resolvers = {
       async (
         _: any,
         args: EditPlaceMutationArgs,
-        { req }: ReqContext,
+        { req }: reqContext,
       ): Promise<EditPlaceResponse> => {
         const { user } = req;
         try {

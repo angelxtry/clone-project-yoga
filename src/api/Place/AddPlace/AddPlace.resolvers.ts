@@ -2,7 +2,7 @@ import Place from '../../../entities/Place';
 import authResolver from '../../../utils/authResolver';
 import { Resolvers } from '../../../types/resolvers';
 import { AddPlaceResponse, AddPlaceMutationArgs } from '../../../types/graphql';
-import { ReqContext } from '../../../types/types';
+import { reqContext } from '../../../types/types';
 
 const resolvers: Resolvers = {
   Mutation: {
@@ -10,7 +10,7 @@ const resolvers: Resolvers = {
       async (
         _: any,
         args: AddPlaceMutationArgs,
-        { req }: ReqContext,
+        { req }: reqContext,
       ): Promise<AddPlaceResponse> => {
         const { user } = req;
         try {

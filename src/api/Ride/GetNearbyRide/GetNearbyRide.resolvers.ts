@@ -1,5 +1,5 @@
 import { getRepository, Between } from 'typeorm';
-import { ReqContext } from '../../../types/types';
+import { reqContext } from '../../../types/types';
 import Ride from '../../../entities/Ride';
 import { GetNearbyRideResponse } from '../../../types/graphql';
 import authResolver from '../../../utils/authResolver';
@@ -11,7 +11,7 @@ const resolvers: Resolvers = {
       async (
         _: any,
         __: any,
-        { req }: ReqContext,
+        { req }: reqContext,
       ): Promise<GetNearbyRideResponse> => {
         const { user } = req;
         if (user.isDriving) {

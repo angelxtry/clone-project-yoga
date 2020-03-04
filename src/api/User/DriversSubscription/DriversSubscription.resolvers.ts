@@ -1,20 +1,18 @@
 import { withFilter } from 'graphql-yoga';
-import User from '../../../entities/User';
+import { pubSubContext, subscriptionCtx } from '../../../types/types';
 
 const resolvers = {
   Subscription: {
     DriversSubscription: {
       subscribe: withFilter(
-        (_: any, __: any, { pubSub }: { pubSub: any }) =>
+        (_: any, __: any, { pubSub }: pubSubContext) =>
           pubSub.asyncIterator('driverUpdate'),
         async (
           payload: any,
           _: any,
-          { context }: { context: any },
+          { context }: subscriptionCtx,
         ): Promise<boolean> => {
-          // console.log('This is coming from ReportMovement Resolver', payload);
-          // console.log(context);
-          const user: User = context.currentUser;
+          const user = context.currentUser;
           const { lastLat: userLastLat, lastLng: userLastLng } = user;
           const {
             DriversSubscription: {

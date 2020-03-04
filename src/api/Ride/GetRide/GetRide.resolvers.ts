@@ -1,4 +1,4 @@
-import { ReqContext } from '../../../types/types';
+import { reqContext } from '../../../types/types';
 import Ride from '../../../entities/Ride';
 import authResolver from '../../../utils/authResolver';
 import { Resolvers } from '../../../types/resolvers';
@@ -10,7 +10,7 @@ const resolvers: Resolvers = {
       async (
         _: any,
         args: GetRideQueryArgs,
-        { req }: ReqContext,
+        { req }: reqContext,
       ): Promise<GetRideResponse> => {
         const { user } = req;
         try {

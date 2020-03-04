@@ -2,7 +2,7 @@ import Chat from '../../../entities/Chat';
 import { Resolvers } from '../../../types/resolvers';
 import authResolver from '../../../utils/authResolver';
 import { GetChatResponse, GetChatQueryArgs } from '../../../types/graphql';
-import { ReqContext } from '../../../types/types';
+import { reqContext } from '../../../types/types';
 
 const resolvers: Resolvers = {
   Query: {
@@ -10,7 +10,7 @@ const resolvers: Resolvers = {
       async (
         _: any,
         args: GetChatQueryArgs,
-        { req }: ReqContext,
+        { req }: reqContext,
       ): Promise<GetChatResponse> => {
         const { user } = req;
         try {

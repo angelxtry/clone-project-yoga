@@ -1,4 +1,4 @@
-import { ReqContext } from '../../../types/types';
+import { reqContext } from '../../../types/types';
 import { Resolvers } from '../../../types/resolvers';
 import { ToggleDrivingModeResponse } from '../../../types/graphql';
 import authResolver from '../../../utils/authResolver';
@@ -9,7 +9,7 @@ const resolvers: Resolvers = {
       async (
         _: any,
         __: any,
-        { req }: ReqContext,
+        { req }: reqContext,
       ): Promise<ToggleDrivingModeResponse> => {
         const { user } = req;
         try {

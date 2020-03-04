@@ -1,4 +1,4 @@
-import { ReqContext } from '../../../types/types';
+import { reqContext } from '../../../types/types';
 import User from '../../../entities/User';
 import { GetMyPlaceResponse } from '../../../types/graphql';
 import authResolver from '../../../utils/authResolver';
@@ -10,7 +10,7 @@ const resolvers: Resolvers = {
       async (
         _: any,
         __: any,
-        { req }: ReqContext,
+        { req }: reqContext,
       ): Promise<GetMyPlaceResponse> => {
         try {
           const user = await User.findOne(

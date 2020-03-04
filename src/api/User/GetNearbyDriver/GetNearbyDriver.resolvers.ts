@@ -1,5 +1,5 @@
 import { getRepository, Between } from 'typeorm';
-import { ReqContext } from '../../../types/types';
+import { reqContext } from '../../../types/types';
 import authResolver from '../../../utils/authResolver';
 import User from '../../../entities/User';
 import { Resolvers } from '../../../types/resolvers';
@@ -11,7 +11,7 @@ const resolvers: Resolvers = {
       async (
         _: any,
         __: any,
-        { req }: ReqContext,
+        { req }: reqContext,
       ): Promise<GetNearbyDriverResponse> => {
         const { user } = req;
         const { lastLat, lastLng } = user;

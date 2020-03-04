@@ -1,3 +1,4 @@
+import { PubSub } from 'graphql-yoga';
 import User from '../entities/User';
 
 export type verificationTarget = 'PHONE' | 'EMAIL';
@@ -9,8 +10,18 @@ export type rideStatus =
   | 'REQUESTED'
   | 'ONROUTE';
 
-export type ReqContext = {
+export type reqContext = {
   req: {
-    user: User
-  }
-}
+    user: User;
+  };
+};
+
+export type pubSubContext = {
+  pubSub: PubSub;
+};
+
+export type subscriptionCtx = {
+  context: {
+    currentUser: User;
+  };
+};

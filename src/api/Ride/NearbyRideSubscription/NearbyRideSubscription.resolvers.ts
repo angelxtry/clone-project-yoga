@@ -1,13 +1,14 @@
 import { withFilter } from 'graphql-yoga';
-import User from '../../../entities/User';
+import { pubSubContext, subscriptionCtx } from '../../../types/types';
 
 const resolvers = {
   Subscription: {
     NearbyRideSubscription: {
       subscribe: withFilter(
-        (_: any, __: any, { pubSub }) => pubSub.asyncIterator('rideRequest'),
-        async (payload: any, __: any, { context }: { context: any }) => {
-          const user: User = context.currentUser;
+        (_: any, __: any, { pubSub }: pubSubContext) =>
+          pubSub.asyncIterator('rideRequest'),
+        async (payload: any, __: any, { context }: subscriptionCtx) => {
+          const user = context.currentUser;
           const {
             NearbyRideSubscription: { pickUpLat, pickUpLng },
           } = payload;

@@ -5,6 +5,7 @@ import * as logger from 'morgan';
 import { NextFunction, Response } from 'express';
 import schema from './schema';
 import decodeJWT from './utils/decodeJWT';
+import { subscriptionCtx } from './types/types';
 
 class App {
   public app: GraphQLServer;
@@ -21,8 +22,8 @@ class App {
         const { connection: { context = null } = {} } = req;
         return {
           req: req.request,
-          pubSub: this.pubSub,
-          context,
+          pubSub: this.pubSub as PubSub,
+          context: context as subscriptionCtx,
         };
       },
     });
