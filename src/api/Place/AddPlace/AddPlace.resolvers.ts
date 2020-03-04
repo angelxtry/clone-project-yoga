@@ -1,8 +1,8 @@
-import Place from '../../../entities/Place';
-import authResolver from '../../../utils/authResolver';
-import { Resolvers } from '../../../types/resolvers';
-import { AddPlaceResponse, AddPlaceMutationArgs } from '../../../types/graphql';
-import { reqContext } from '../../../types/types';
+import Place from '@src/entities/Place';
+import authResolver from '@src/utils/authResolver';
+import { Resolvers } from '@src/types/resolvers';
+import { AddPlaceResponse, AddPlaceMutationArgs } from '@src/types/graphql';
+import { reqContext } from '@src/types/types';
 
 const resolvers: Resolvers = {
   Mutation: {

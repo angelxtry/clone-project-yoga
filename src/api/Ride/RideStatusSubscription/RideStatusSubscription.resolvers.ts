@@ -1,6 +1,6 @@
 import { withFilter } from 'graphql-yoga';
-import { pubSubContext, subscriptionCtx, Payload } from '../../../types/types';
-import Ride from '../../../entities/Ride';
+import { pubSubContext, subscriptionCtx, Payload } from '@src/types/types';
+import Ride from '@src/entities/Ride';
 
 const resolvers = {
   Subscription: {

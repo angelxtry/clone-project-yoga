@@ -1,10 +1,10 @@
-import { sendVerificationSMS } from '../../../utils/sendSMS';
-import Verification from '../../../entities/Verification';
-import { Resolvers } from '../../../types/resolvers';
+import { sendVerificationSMS } from '@src/utils/sendSMS';
+import Verification from '@src/entities/Verification';
+import { Resolvers } from '@src/types/resolvers';
 import {
   StartPhoneVerificationResponse,
   StartPhoneVerificationMutationArgs,
-} from '../../../types/graphql';
+} from '@src/types/graphql';
 
 const resolvers: Resolvers = {
   Mutation: {

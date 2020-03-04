@@ -1,8 +1,8 @@
-import { reqContext } from '../../../types/types';
-import User from '../../../entities/User';
-import { GetMyPlaceResponse } from '../../../types/graphql';
-import authResolver from '../../../utils/authResolver';
-import { Resolvers } from '../../../types/resolvers';
+import { reqContext } from '@src/types/types';
+import User from '@src/entities/User';
+import { GetMyPlaceResponse } from '@src/types/graphql';
+import authResolver from '@src/utils/authResolver';
+import { Resolvers } from '@src/types/resolvers';
 
 const resolvers: Resolvers = {
   Query: {

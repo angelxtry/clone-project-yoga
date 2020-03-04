@@ -1,12 +1,12 @@
-import { ReqPubSubCtx } from '../../../types/types';
-import cleanNullArgs from '../../../utils/cleanNummArgs';
-import User from '../../../entities/User';
-import { Resolvers } from '../../../types/resolvers';
+import { ReqPubSubCtx } from '@src/types/types';
+import cleanNullArgs from '@src/utils/cleanNummArgs';
+import User from '@src/entities/User';
+import { Resolvers } from '@src/types/resolvers';
 import {
   ReportMovementResponse,
   ReportMovementMutationArgs,
-} from '../../../types/graphql';
-import authResolver from '../../../utils/authResolver';
+} from '@src/types/graphql';
+import authResolver from '@src/utils/authResolver';
 
 const resolvers: Resolvers = {
   Mutation: {

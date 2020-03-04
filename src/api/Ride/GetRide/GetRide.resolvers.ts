@@ -1,8 +1,8 @@
-import { reqContext } from '../../../types/types';
-import Ride from '../../../entities/Ride';
-import authResolver from '../../../utils/authResolver';
-import { Resolvers } from '../../../types/resolvers';
-import { GetRideResponse, GetRideQueryArgs } from '../../../types/graphql';
+import { reqContext } from '@src/types/types';
+import Ride from '@src/entities/Ride';
+import authResolver from '@src/utils/authResolver';
+import { Resolvers } from '@src/types/resolvers';
+import { GetRideResponse, GetRideQueryArgs } from '@src/types/graphql';
 
 const resolvers: Resolvers = {
   Query: {

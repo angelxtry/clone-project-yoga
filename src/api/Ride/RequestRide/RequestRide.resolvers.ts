@@ -1,11 +1,11 @@
-import { ReqPubSubCtx } from '../../../types/types';
-import authResolver from '../../../utils/authResolver';
+import { ReqPubSubCtx } from '@src/types/types';
+import authResolver from '@src/utils/authResolver';
 import {
   RequestRideMutationArgs,
   RequestRideResponse,
-} from '../../../types/graphql';
-import { Resolvers } from '../../../types/resolvers';
-import Ride from '../../../entities/Ride';
+} from '@src/types/graphql';
+import { Resolvers } from '@src/types/resolvers';
+import Ride from '@src/entities/Ride';
 
 const resolvers: Resolvers = {
   Mutation: {

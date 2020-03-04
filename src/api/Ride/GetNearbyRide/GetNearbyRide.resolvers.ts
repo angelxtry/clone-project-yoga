@@ -1,9 +1,9 @@
 import { getRepository, Between } from 'typeorm';
-import { reqContext } from '../../../types/types';
-import Ride from '../../../entities/Ride';
-import { GetNearbyRideResponse } from '../../../types/graphql';
-import authResolver from '../../../utils/authResolver';
-import { Resolvers } from '../../../types/resolvers';
+import { reqContext } from '@src/types/types';
+import Ride from '@src/entities/Ride';
+import { GetNearbyRideResponse } from '@src/types/graphql';
+import authResolver from '@src/utils/authResolver';
+import { Resolvers } from '@src/types/resolvers';
 
 const resolvers: Resolvers = {
   Query: {

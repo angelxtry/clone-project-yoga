@@ -1,9 +1,9 @@
-import { reqContext } from '../../../types/types';
-import sendVerificationEmail from '../../../utils/sendEmail';
-import Verification from '../../../entities/Verification';
-import { Resolvers } from '../../../types/resolvers';
-import { RequestEmailVerificationResponse } from '../../../types/graphql';
-import authResolver from '../../../utils/authResolver';
+import { reqContext } from '@src/types/types';
+import sendVerificationEmail from '@src/utils/sendEmail';
+import Verification from '@src/entities/Verification';
+import { Resolvers } from '@src/types/resolvers';
+import { RequestEmailVerificationResponse } from '@src/types/graphql';
+import authResolver from '@src/utils/authResolver';
 
 const resolvers: Resolvers = {
   Mutation: {

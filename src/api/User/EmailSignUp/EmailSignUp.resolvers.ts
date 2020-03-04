@@ -1,12 +1,12 @@
-import sendVerificationEmail from '../../../utils/sendEmail';
-import Verification from '../../../entities/Verification';
-import createJWT from '../../../utils/createJWT';
-import User from '../../../entities/User';
+import sendVerificationEmail from '@src/utils/sendEmail';
+import Verification from '@src/entities/Verification';
+import createJWT from '@src/utils/createJWT';
+import User from '@src/entities/User';
 import {
   EmailSignUpMutationArgs,
   EmailSignUpResponse,
-} from '../../../types/graphql';
-import { Resolvers } from '../../../types/resolvers';
+} from '@src/types/graphql';
+import { Resolvers } from '@src/types/resolvers';
 
 const resolvers: Resolvers = {
   Mutation: {

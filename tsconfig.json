@@ -26,8 +26,11 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "skipLibCheck": true,
+    "rootDir": "src",
     "baseUrl": ".",
-    "rootDir": "src"
+    "paths": {
+      "@src/*": [ "src/*" ]
+    }
   },
   "exclude": [
     "node_modules"

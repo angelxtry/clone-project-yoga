@@ -1,12 +1,12 @@
-import { ReqPubSubCtx } from '../../../types/types';
-import Chat from '../../../entities/Chat';
-import Ride from '../../../entities/Ride';
-import authResolver from '../../../utils/authResolver';
-import { Resolvers } from '../../../types/resolvers';
+import { ReqPubSubCtx } from '@src/types/types';
+import Chat from '@src/entities/Chat';
+import Ride from '@src/entities/Ride';
+import authResolver from '@src/utils/authResolver';
+import { Resolvers } from '@src/types/resolvers';
 import {
   UpdateRideStatusResponse,
   UpdateRideStatusMutationArgs,
-} from '../../../types/graphql';
+} from '@src/types/graphql';
 
 const resolvers: Resolvers = {
   Mutation: {

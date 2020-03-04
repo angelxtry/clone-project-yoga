@@ -1,9 +1,9 @@
 import { getRepository, Between } from 'typeorm';
-import { reqContext } from '../../../types/types';
-import authResolver from '../../../utils/authResolver';
-import User from '../../../entities/User';
-import { Resolvers } from '../../../types/resolvers';
-import { GetNearbyDriverResponse } from '../../../types/graphql';
+import { reqContext } from '@src/types/types';
+import authResolver from '@src/utils/authResolver';
+import User from '@src/entities/User';
+import { Resolvers } from '@src/types/resolvers';
+import { GetNearbyDriverResponse } from '@src/types/graphql';
 
 const resolvers: Resolvers = {
   Query: {

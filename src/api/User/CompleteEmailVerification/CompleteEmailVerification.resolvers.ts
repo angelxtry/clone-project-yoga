@@ -1,11 +1,11 @@
-import { reqContext } from '../../../types/types';
-import Verification from '../../../entities/Verification';
+import { reqContext } from '@src/types/types';
+import Verification from '@src/entities/Verification';
 import {
   CompleteEmailVerificationResponse,
   CompleteEmailVerificationMutationArgs,
-} from '../../../types/graphql';
-import { Resolvers } from '../../../types/resolvers';
-import authResolver from '../../../utils/authResolver';
+} from '@src/types/graphql';
+import { Resolvers } from '@src/types/resolvers';
+import authResolver from '@src/utils/authResolver';
 
 const resolvers: Resolvers = {
   Mutation: {

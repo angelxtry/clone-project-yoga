@@ -8,3 +8,9 @@ ormconfig.json
 
 # dotenv
 .env
+
+# dist
+dist/
+
+# yarn-error
+yarn-error.log

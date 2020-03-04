@@ -1,7 +1,7 @@
 import { withFilter } from 'graphql-yoga';
-import Message from '../../../entities/Message';
-import { pubSubContext, subscriptionCtx, Payload } from '../../../types/types';
-import Chat from '../../../entities/Chat';
+import Message from '@src/entities/Message';
+import { pubSubContext, subscriptionCtx, Payload } from '@src/types/types';
+import Chat from '@src/entities/Chat';
 
 const resolvers = {
   Subscription: {

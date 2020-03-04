@@ -1,7 +1,7 @@
-import { reqContext } from '../../../types/types';
-import { Resolvers } from '../../../types/resolvers';
-import { ToggleDrivingModeResponse } from '../../../types/graphql';
-import authResolver from '../../../utils/authResolver';
+import { reqContext } from '@src/types/types';
+import { Resolvers } from '@src/types/resolvers';
+import { ToggleDrivingModeResponse } from '@src/types/graphql';
+import authResolver from '@src/utils/authResolver';
 
 const resolvers: Resolvers = {
   Mutation: {

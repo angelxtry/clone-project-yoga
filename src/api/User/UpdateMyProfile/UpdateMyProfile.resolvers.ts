@@ -1,12 +1,12 @@
-import { reqContext } from '../../../types/types';
-import cleanNullArgs from '../../../utils/cleanNummArgs';
-import authResolver from '../../../utils/authResolver';
-import User from '../../../entities/User';
-import { Resolvers } from '../../../types/resolvers';
+import { reqContext } from '@src/types/types';
+import cleanNullArgs from '@src/utils/cleanNummArgs';
+import authResolver from '@src/utils/authResolver';
+import User from '@src/entities/User';
+import { Resolvers } from '@src/types/resolvers';
 import {
   UpdateMyProfileResponse,
   UpdateMyProfileMutationArgs,
-} from '../../../types/graphql';
+} from '@src/types/graphql';
 
 const resolvers: Resolvers = {
   Mutation: {

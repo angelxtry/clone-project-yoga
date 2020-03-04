@@ -5,7 +5,7 @@ const connectionOptions: ConnectionOptions = {
   database: 'uber_origin',
   synchronize: true,
   logging: true,
-  entities: ['src/entities/**/*.*'],
+  entities: ['dist/entities/**/*.*'],
   host: process.env.DB,
   port: 5432,
   username: process.env.DB_USERNAME,

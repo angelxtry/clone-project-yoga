@@ -1,8 +1,8 @@
-import Chat from '../../../entities/Chat';
-import { Resolvers } from '../../../types/resolvers';
-import authResolver from '../../../utils/authResolver';
-import { GetChatResponse, GetChatQueryArgs } from '../../../types/graphql';
-import { reqContext } from '../../../types/types';
+import Chat from '@src/entities/Chat';
+import { Resolvers } from '@src/types/resolvers';
+import authResolver from '@src/utils/authResolver';
+import { GetChatResponse, GetChatQueryArgs } from '@src/types/graphql';
+import { reqContext } from '@src/types/types';
 
 const resolvers: Resolvers = {
   Query: {

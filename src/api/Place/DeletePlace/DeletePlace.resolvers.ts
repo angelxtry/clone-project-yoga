@@ -1,11 +1,11 @@
-import { reqContext } from '../../../types/types';
-import authResolver from '../../../utils/authResolver';
-import Place from '../../../entities/Place';
+import { reqContext } from '@src/types/types';
+import authResolver from '@src/utils/authResolver';
+import Place from '@src/entities/Place';
 import {
   DeletePlaceResponse,
   DeletePlaceMutationArgs,
-} from '../../../types/graphql';
-import { Resolvers } from '../../../types/resolvers';
+} from '@src/types/graphql';
+import { Resolvers } from '@src/types/resolvers';
 
 const resolvers: Resolvers = {
   Mutation: {

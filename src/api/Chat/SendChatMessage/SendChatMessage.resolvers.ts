@@ -1,12 +1,12 @@
-import { ReqPubSubCtx } from '../../../types/types';
-import Message from '../../../entities/Message';
-import Chat from '../../../entities/Chat';
-import authResolver from '../../../utils/authResolver';
+import { ReqPubSubCtx } from '@src/types/types';
+import Message from '@src/entities/Message';
+import Chat from '@src/entities/Chat';
+import authResolver from '@src/utils/authResolver';
 import {
   SendChatMessageMutationArgs,
   SendChatMessageResponse,
-} from '../../../types/graphql';
-import { Resolvers } from '../../../types/resolvers';
+} from '@src/types/graphql';
+import { Resolvers } from '@src/types/resolvers';
 
 const resolvers: Resolvers = {
   Mutation: {

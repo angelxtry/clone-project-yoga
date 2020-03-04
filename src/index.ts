@@ -1,3 +1,4 @@
+import 'module-alias/register';
 import { Options } from 'graphql-yoga';
 import { createConnection } from 'typeorm';
 import * as dotenv from 'dotenv';

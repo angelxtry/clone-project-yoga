@@ -1,12 +1,12 @@
-import { reqContext } from '../../../types/types';
-import Place from '../../../entities/Place';
-import cleanNullArgs from '../../../utils/cleanNummArgs';
-import authResolver from '../../../utils/authResolver';
+import { reqContext } from '@src/types/types';
+import Place from '@src/entities/Place';
+import cleanNullArgs from '@src/utils/cleanNummArgs';
+import authResolver from '@src/utils/authResolver';
 import {
   EditPlaceResponse,
   EditPlaceMutationArgs,
-} from '../../../types/graphql';
-import { Resolvers } from '../../../types/resolvers';
+} from '@src/types/graphql';
+import { Resolvers } from '@src/types/resolvers';
 
 const resolvers: Resolvers = {
   Mutation: {
