@@ -1,5 +1,6 @@
 import { withFilter } from 'graphql-yoga';
-import { pubSubContext, subscriptionCtx } from '../../../types/types';
+import User from '../../../entities/User';
+import { pubSubContext, subscriptionCtx, Payload } from '../../../types/types';
 
 const resolvers = {
   Subscription: {
@@ -8,7 +9,7 @@ const resolvers = {
         (_: any, __: any, { pubSub }: pubSubContext) =>
           pubSub.asyncIterator('driverUpdate'),
         async (
-          payload: any,
+          payload: Payload<User>,
           _: any,
           { context }: subscriptionCtx,
         ): Promise<boolean> => {

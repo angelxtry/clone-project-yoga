@@ -1,6 +1,6 @@
+import { ReqPubSubCtx } from '../../../types/types';
 import Message from '../../../entities/Message';
 import Chat from '../../../entities/Chat';
-import User from '../../../entities/User';
 import authResolver from '../../../utils/authResolver';
 import {
   SendChatMessageMutationArgs,
@@ -14,9 +14,9 @@ const resolvers: Resolvers = {
       async (
         _: any,
         args: SendChatMessageMutationArgs,
-        { req, pubSub }: { req: any, pubSub: any },
+        { req, pubSub }: ReqPubSubCtx,
       ): Promise<SendChatMessageResponse> => {
-        const { user }: { user: User } = req;
+        const { user } = req;
         try {
           const chat = await Chat.findOne({ id: args.chatId });
           if (chat) {

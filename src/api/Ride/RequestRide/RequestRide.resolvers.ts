@@ -1,4 +1,4 @@
-import User from '../../../entities/User';
+import { ReqPubSubCtx } from '../../../types/types';
 import authResolver from '../../../utils/authResolver';
 import {
   RequestRideMutationArgs,
@@ -13,9 +13,9 @@ const resolvers: Resolvers = {
       async (
         _: any,
         args: RequestRideMutationArgs,
-        { req, pubSub }: { req: any, pubSub: any },
+        { req, pubSub }: ReqPubSubCtx,
       ): Promise<RequestRideResponse> => {
-        const { user }: { user: User } = req;
+        const { user } = req;
         if (!user.isRiding) {
           try {
             const ride = await Ride.create({ ...args, passenger: user }).save();

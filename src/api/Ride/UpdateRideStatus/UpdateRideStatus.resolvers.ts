@@ -1,6 +1,6 @@
+import { ReqPubSubCtx } from '../../../types/types';
 import Chat from '../../../entities/Chat';
 import Ride from '../../../entities/Ride';
-import User from '../../../entities/User';
 import authResolver from '../../../utils/authResolver';
 import { Resolvers } from '../../../types/resolvers';
 import {
@@ -14,9 +14,9 @@ const resolvers: Resolvers = {
       async (
         _: any,
         args: UpdateRideStatusMutationArgs,
-        { req, pubSub }: { req: any; pubSub: any },
+        { req, pubSub }: ReqPubSubCtx,
       ): Promise<UpdateRideStatusResponse> => {
-        const { user }: { user: User } = req;
+        const { user } = req;
         if (user.isDriving) {
           try {
             let ride: Ride | undefined;

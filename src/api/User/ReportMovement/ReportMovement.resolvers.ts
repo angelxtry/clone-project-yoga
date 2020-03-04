@@ -1,3 +1,4 @@
+import { ReqPubSubCtx } from '../../../types/types';
 import cleanNullArgs from '../../../utils/cleanNummArgs';
 import User from '../../../entities/User';
 import { Resolvers } from '../../../types/resolvers';
@@ -13,9 +14,9 @@ const resolvers: Resolvers = {
       async (
         _: any,
         args: ReportMovementMutationArgs,
-        { req, pubSub }: { req: any; pubSub: any },
+        { req, pubSub }: ReqPubSubCtx,
       ): Promise<ReportMovementResponse> => {
-        const { user }: { user: User } = req;
+        const { user } = req;
         const notNull = cleanNullArgs(args);
         try {
           await User.update({ id: user.id }, { ...notNull });

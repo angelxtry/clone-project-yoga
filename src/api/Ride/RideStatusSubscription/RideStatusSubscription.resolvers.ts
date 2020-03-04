@@ -1,5 +1,6 @@
 import { withFilter } from 'graphql-yoga';
-import { pubSubContext, subscriptionCtx } from '../../../types/types';
+import { pubSubContext, subscriptionCtx, Payload } from '../../../types/types';
+import Ride from '../../../entities/Ride';
 
 const resolvers = {
   Subscription: {
@@ -7,7 +8,11 @@ const resolvers = {
       subscribe: withFilter(
         (_: any, __: any, { pubSub }: pubSubContext) =>
           pubSub.asyncIterator('rideUpdate'),
-        async (payload: any, _: any, { context }: subscriptionCtx) => {
+        async (
+          payload: Payload<Ride>,
+          _: any,
+          { context }: subscriptionCtx,
+        ) => {
           const user = context.currentUser;
           const {
             RideStatusSubscription: { driverId, passengerId },

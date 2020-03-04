@@ -20,8 +20,14 @@ export type pubSubContext = {
   pubSub: PubSub;
 };
 
+export interface ReqPubSubCtx extends reqContext, pubSubContext {}
+
 export type subscriptionCtx = {
   context: {
     currentUser: User;
   };
 };
+
+export interface Payload<T> {
+  [key: string]: T;
+}

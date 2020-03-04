@@ -1,5 +1,6 @@
 import { withFilter } from 'graphql-yoga';
-import { pubSubContext, subscriptionCtx } from '../../../types/types';
+import Message from '../../../entities/Message';
+import { pubSubContext, subscriptionCtx, Payload } from '../../../types/types';
 import Chat from '../../../entities/Chat';
 
 const resolvers = {
@@ -8,7 +9,11 @@ const resolvers = {
       subscribe: withFilter(
         (_: any, __: any, { pubSub }: pubSubContext) =>
           pubSub.asyncIterator('sendMessage'),
-        async (payload: any, _: any, { context }: subscriptionCtx) => {
+        async (
+          payload: Payload<Message>,
+          _: any,
+          { context }: subscriptionCtx,
+        ) => {
           const user = context.currentUser;
           const {
             MessageSubscription: { chatId },
